@@ -3,14 +3,14 @@ import Player from "./Player.model";
 
 // Word endpoints
 export const findAll = async (req, res) => {
-    const recipes = await Word.findAll();
-    res.status(200).send({ recipes });
+    const words = await Word.findAll();
+    res.status(200).send({ words });
 }
 
-export const find = async (req, res) => {
-    const recipe = await Recipe.find(req.params.id);
-    res.status(200).send({ recipe });
-}
+// export const find = async (req, res) => {
+//     const recipe = await Recipe.find(req.params.id);
+//     res.status(200).send({ recipe });
+// }
 
 export const create = (req, res) => {
     const newRecipe = new Recipe(req.body);
@@ -29,3 +29,11 @@ export const destroy = (req, res) => {
 }
 
 // Player endpoints
+export const create = (req, res) => {
+    const newRecipe = new Player(req.body);
+    newRecipe.save();
+    res.status(201).send({
+        message: "Recipe successfully created",
+        "recipe": newRecipe
+    });
+}

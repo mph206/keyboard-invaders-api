@@ -1,17 +1,11 @@
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import { firestore } from '../config/firebase';
 
 export default class Word {
     constructor(data) {
-        this.id = data.id || uuid();
-        this.name = data.name;
+        // this.id = data.id || uuid();
+        this.word = data.word;
         this.category = data.category;
-        this.area = data.area;
-        this.instructions = data.instructions;
-        this.thumbnail = data.thumbnail;
-        this.tags = data.tags;
-        this.ingredients = data.ingredients;
-        this.source = data.source;
         this.dateCreated = new Date().toUTCString();
     }
 
@@ -27,11 +21,11 @@ export default class Word {
 
     async save() {
         this.dateModified = new Date().toUTCString();
-        const recipe = {...this};
-        const response = await firestore.collection("recipes").doc(recipe.id).set(recipe);
+        const word = {...this};
+        const response = await firestore.collection("words").doc(word.word).set(word);
     }
 
-    static async destroy(id) {
-        const response = await firestore.collection("recipes").doc(id).delete();
-    }
+    // static async destroy(id) {
+    //     const response = await firestore.collection("recipes").doc(id).delete();
+    // }
 }
