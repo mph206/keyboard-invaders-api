@@ -1,13 +1,13 @@
 import { Router } from "express";
-import * as recipes from "./controller";   
+import * as controller from "./controller";   
 
 const router = Router();
 
-router.get("/", word.findAll);
+router.get("/", controller.findAllWords);
 
-// router.get("/:id", recipes.find);
+router.get("/:category", controller.findCategory);
 
-router.post("/", recipes.create);
+// router.post("/", controller.createWord);
 
 // router.delete("/:id", recipes.destroy);
 

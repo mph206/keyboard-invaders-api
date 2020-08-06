@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { firestore } from '../config/firebase';
+// import { firestore } from '../config/firebase';
 
 export default class Player {
     constructor(data) {
