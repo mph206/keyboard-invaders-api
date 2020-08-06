@@ -20,4 +20,3 @@ export default class Score {
         const response = await firestore.collection("scores").doc(score.id).set(score);
     }
 }
-uuid()

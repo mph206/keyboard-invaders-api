@@ -32,4 +32,3 @@ class Score {
 }
 
 exports.default = Score;
-(0, _uuid.v4)();
