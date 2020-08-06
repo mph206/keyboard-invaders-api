@@ -5,12 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createWord = exports.findCategory = exports.findAllWords = void 0;
 
-var _word = _interopRequireDefault(require("../models/word.model"));
+var _words = _interopRequireDefault(require("../models/words.model"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const findAllWords = async (req, res) => {
-  const words = await _word.default.findAll();
+  const words = await _words.default.findAll();
   res.status(200).send({
     words
   });
@@ -19,7 +19,7 @@ const findAllWords = async (req, res) => {
 exports.findAllWords = findAllWords;
 
 const findCategory = async (req, res) => {
-  const words = await _word.default.findCategory(req.params.category);
+  const words = await _words.default.findCategory(req.params.category);
   res.status(200).send({
     words
   });
@@ -28,7 +28,7 @@ const findCategory = async (req, res) => {
 exports.findCategory = findCategory;
 
 const createWord = (req, res) => {
-  const newWord = new _word.default(req.body);
+  const newWord = new _words.default(req.body);
   newWord.save();
   res.status(201).send({
     message: "Word successfully created",

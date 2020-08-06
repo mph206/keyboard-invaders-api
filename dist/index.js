@@ -9,7 +9,9 @@ var _express = _interopRequireDefault(require("express"));
 
 var _morgan = _interopRequireDefault(require("morgan"));
 
-var _router = _interopRequireDefault(require("./router"));
+var _words = _interopRequireDefault(require("./routes/words.routes"));
+
+var _score = _interopRequireDefault(require("./routes/score.routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,7 +22,8 @@ app.use(_express.default.json());
 app.use(_express.default.urlencoded({
   extended: false
 }));
-app.use('/api/router', _router.default);
+app.use('/api/words', _words.default);
+app.use('/api/scores', _score.default);
 app.get('/api', (req, res) => res.send({
   message: "Welcome to the keyboard invaders API!"
 }));

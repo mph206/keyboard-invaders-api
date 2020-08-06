@@ -1,4 +1,4 @@
-import Word from "../models/word.model";
+import Word from "../models/words.model";
 
 export const findAllWords = async (req, res) => {
     const words = await Word.findAll();
