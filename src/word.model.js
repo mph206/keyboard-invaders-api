@@ -4,7 +4,6 @@ export default class Word {
     constructor(data) {
         this.word = data.word;
         this.category = data.category;
-        this.dateCreated = new Date().toUTCString(); 
     }
 
     static async findAll() {
@@ -14,6 +13,11 @@ export default class Word {
 
     static async findCategory(category) {
         const response = await firestore.collection("words").where('category', '==', category).get();
-        return response.data();
+        return response.docs.map(doc => doc.data());
+    }
+
+    async save() {
+        const word = {...this};
+        const response = await firestore.collection("words").doc(word.word).set(word);
     }
 }

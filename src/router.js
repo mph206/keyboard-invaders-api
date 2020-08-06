@@ -7,7 +7,7 @@ router.get("/", controller.findAllWords);
 
 router.get("/:category", controller.findCategory);
 
-// router.post("/", controller.createWord);
+router.post("/", controller.createWord);
 
 // router.delete("/:id", recipes.destroy);
 

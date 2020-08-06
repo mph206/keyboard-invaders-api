@@ -12,6 +12,15 @@ export const findCategory = async (req, res) => {
     res.status(200).send({ words });
 }
 
+export const createWord = (req, res) => {
+    const newWord = new Word(req.body);
+    newWord.save();
+    res.status(201).send({
+        message: "Word successfully created",
+        "word": newWord
+    });
+}
+
 // export const createWord = (req, res) => {
 //     const newRod = new Word(req.body);
 //     newWord.save();
