@@ -1,14 +1,10 @@
 import { Router } from "express";
-import * as scores from "./controllers/score.controller";   
+import * as scores from "../controllers/scores.controller";   
 
 const router = Router();
 
-router.get("/", scores.findAllWords);
+router.get("/", scores.findAll);
 
-// router.get("/:category", scores.findCategory);
-
-router.post("/", scores.uploadScore);
-
-// router.delete("/:id", recipes.destroy);
+router.post("/", scores.addScore);
 
 module.exports = router;

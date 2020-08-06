@@ -5,23 +5,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.addScore = exports.findAll = void 0;
 
-var _score = _interopRequireDefault(require("../models/score.model"));
+var _scores = _interopRequireDefault(require("../models/scores.model"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Word endpoints
 const findAll = async (req, res) => {
-  const words = await _score.default.findAll();
+  const scores = await _scores.default.findAll();
   res.status(200).send({
-    words
+    scores
   });
 };
 
 exports.findAll = findAll;
 
 const addScore = (req, res) => {
-  const newScore = new _score.default(req.body);
-  newScore.save();
+  const newScore = new _scores.default(req.body);
+  newScore.saveScore();
   res.status(201).send({
     message: "Score successfully uploaded",
     "score": newScore

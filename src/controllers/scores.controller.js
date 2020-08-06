@@ -1,14 +1,13 @@
-import Score from "../models/score.model";
+import Score from "../models/scores.model";
 
-// Word endpoints
 export const findAll = async (req, res) => {
-    const words = await Score.findAll();
-    res.status(200).send({ words });
+    const scores = await Score.findAll();
+    res.status(200).send({ scores });
 }
 
 export const addScore = (req, res) => {
     const newScore = new Score(req.body);
-    newScore.save();
+    newScore.saveScore();
     res.status(201).send({
         message: "Score successfully uploaded",
         "score": newScore
