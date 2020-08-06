@@ -7,8 +7,9 @@ exports.default = void 0;
 
 var _uuid = require("uuid");
 
-// import { firestore } from '../config/firebase';
-class Player {
+var _firebase = require("../config/firebase");
+
+class Score {
   constructor(data) {
     this.id = data.id || (0, _uuid.v4)();
     this.name = data.name;
@@ -23,7 +24,7 @@ class Player {
   }
 
   static async findAll() {
-    const response = await firestore.collection("words").get();
+    const response = await _firebase.firestore.collection("words").get();
     return response.docs.map(doc => doc.data());
   } // static async find(id) {
   //     const response = await firestore.collection("recipes").doc(id).get();
@@ -35,13 +36,13 @@ class Player {
     this.dateModified = new Date().toUTCString();
     const recipe = { ...this
     };
-    const response = await firestore.collection("recipes").doc(recipe.id).set(recipe);
+    const response = await _firebase.firestore.collection("recipes").doc(recipe.id).set(recipe);
   }
 
   static async destroy(id) {
-    const response = await firestore.collection("recipes").doc(id).delete();
+    const response = await _firebase.firestore.collection("recipes").doc(id).delete();
   }
 
 }
 
-exports.default = Player;
+exports.default = Score;

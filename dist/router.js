@@ -2,7 +2,7 @@
 
 var _express = require("express");
 
-var controller = _interopRequireWildcard(require("./controller"));
+var controller = _interopRequireWildcard(require("./controllers/score.controller"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 

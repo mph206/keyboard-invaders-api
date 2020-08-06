@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _firebase = require("./config/firebase");
+var _firebase = require("../config/firebase");
 
 class Word {
   constructor(data) {
