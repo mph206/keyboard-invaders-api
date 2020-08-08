@@ -1,22 +1,34 @@
-import { v4 as uuid } from 'uuid';
-import { firestore } from '../config/firebase';
- 
-export default class Score {
-    constructor(data) {
-        this.id = uuid();
-        this.name = data.name;
-        this.wpm = data.wpm;
-        this.wordsTyped = data.wordsTyped;
-        this.dateCreated = new Date().toLocaleString();
-    }
+"use strict";
 
-    static async findAll() {
-        const response = await firestore.collection("scores").get();
-        return response.docs.map(doc => doc.data());
-    }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-    async saveScore() {
-        const score = {...this};
-        const response = await firestore.collection("scores").doc(score.id).set(score);
-    }
+var _uuid = require("uuid");
+
+var _firebase = require("../config/firebase");
+
+class Score {
+  constructor(data) {
+    this.id = (0, _uuid.v4)();
+    this.name = data.name;
+    this.wpm = data.wpm;
+    this.wordsTyped = data.wordsTyped;
+    this.dateCreated = new Date().toLocaleString();
+  }
+
+  static async findAll() {
+    const response = await _firebase.firestore.collection("scores").get();
+    return response.docs.map(doc => doc.data());
+  }
+
+  async saveScore() {
+    const score = { ...this
+    };
+    const response = await _firebase.firestore.collection("scores").doc(score.id).set(score);
+  }
+
 }
+
+exports.default = Score;

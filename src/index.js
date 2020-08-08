@@ -1,3 +1,5 @@
+import * as functions from 'firebase-functions';
+
 import express from "express";
 import logger from "morgan";
 
@@ -18,4 +20,4 @@ app.get("*", (req, res) => res.status(404).send("There is no content at this rou
 
 app.listen(port, () => console.log(`Server is listening on port ${port}.`));
 
-export default app;
+exports.app = functions.https.onRequest(app);

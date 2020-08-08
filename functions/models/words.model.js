@@ -1,23 +1,34 @@
-import { firestore } from '../config/firebase';
+"use strict";
 
-export default class Word {
-    constructor(data) {
-        this.word = data.word;
-        this.category = data.category;
-    }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-    static async findAll() {
-        const response = await firestore.collection("words").get();
-        return response.docs.map(doc => doc.data());
-    }
+var _firebase = require("../config/firebase");
 
-    static async findCategory(category) {
-        const response = await firestore.collection("words").where('category', '==', category).get();
-        return response.docs.map(doc => doc.data());
-    }
+class Word {
+  constructor(data) {
+    this.word = data.word;
+    this.category = data.category;
+  }
 
-    async save() {
-        const word = {...this};
-        const response = await firestore.collection("words").doc(word.word).set(word);
-    }
+  static async findAll() {
+    const response = await _firebase.firestore.collection("words").get();
+    return response.docs.map(doc => doc.data());
+  }
+
+  static async findCategory(category) {
+    const response = await _firebase.firestore.collection("words").where('category', '==', category).get();
+    return response.docs.map(doc => doc.data());
+  }
+
+  async save() {
+    const word = { ...this
+    };
+    const response = await _firebase.firestore.collection("words").doc(word.word).set(word);
+  }
+
 }
+
+exports.default = Word;
