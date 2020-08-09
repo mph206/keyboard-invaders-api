@@ -3,4 +3,4 @@ node_modules
 .vscode
 env.firebase.json
 .firebase
-functions
+functions/
